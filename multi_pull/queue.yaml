@@ -10,3 +10,11 @@ queue:
   max_concurrent_requests: 100
 - name: jobs
   mode: pull
+# modify the acl settings to reflect your details as necessary, if you are using
+# this app as a pull queue provider for the remote pull examples.
+# See the documentation for more information.
+  acl:
+# CHANGE THIS: add your gmail account for the remote_pull_oauth example.
+  # - user_email: you@example.com
+# CHANGE THIS: add another app's service account for the remote_pull example.
+  # - user_email: xxx@appspot.gserviceaccount.com

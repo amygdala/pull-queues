@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      App Engine remote pull queue Demo
+    </title>
+
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js">
+    </script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap-button.js">
+    </script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript">
+    function submit_form(url) {
+      var form = document.getElementById('worker_form');
+      form.action = url;
+      form.submit();
+    }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        App Engine remote pull queue demo
+      </h1>
+      <p>
+        This app demos consumption of jobs from a remote pull queue owned by another app engine app.
+        For the demo to work properly, you must first configure this app to access the pull queue in the other app, and also
+        (if you want it to do anything interesting), populate the job queue in the remote app with some tasks.
+        See the README for more information.</p>
+      <p>{{msg}}</p>
+      <p>
+        Stats on remote pull queue '{{queue_name}}':
+        <ul>
+          <li>Number of tasks: {{totalTasks}}</li>
+          <li>Number leased in last minute: {{leasedLastMinute}}</li>
+          <li>Number leased in last hour: {{leasedLastHour}}</li>
+        </ul>
+        <a href="/">Update stats</a>
+      </p>
+
+
+    <form id="worker_form" action="/" method="post">
+      <input type="button" onclick="submit_form('/workers/start')" value="Start Workers" /> <br/><br/>
+      <input type="button" onclick="submit_form('/workers/purge')" value="Purge Worker Queue" />
+    </form>
+
+    </div>
+  </body>
+</html>
