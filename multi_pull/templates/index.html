@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="text/javascript">
+function submit_form(url) {
+  var form = document.getElementById('root_form');
+  form.action = url;
+  form.submit();
+}
+</script>
+{% endblock %}
+
+{% block body %}
+<h2>Simple Pull Queue Example</h2>
+<p>Adds tagged jobs to a pull queue, then consumes them from a 'worker' push queue.
+   See the app's README for more information.</p>
+<h3>
+  Add some 'job' tasks to a pull queue.
+</h3>
+<form id="root_form" action="/" method="post">
+<input type="text" name="tasks_per_batch" value={{tasks_per_batch}} />Tasks Per Batch<br/>
+<input type="text" name="total_batches" value={{total_batches}} />Total Batches<br/>
+<input type="button" onclick="submit_form('/')" value="Populate Pull Queue" />
+
+<br/><br/>
+
+<h3>Start some worker tasks, running in a push queue, to consume the pull queue jobs.</h3>
+
+<input type="text" name="workers" value={{workers}} />Number of workers<br/>
+<input type="text" name="tasks_per_worker" value={{tasks_per_worker}} />Tasks per worker<br/>
+<input type="text" name="lease_seconds" value={{lease_seconds}} />Lease Seconds<br/>
+<input type="text" name="max_leases_per_task" value={{max_leases_per_task}} />Max Leases per Task<br/>
+<input type="button" onclick="submit_form('/start')" value="Start Workers" />
+
+<br/><br/>
+<input type="button" onclick="submit_form('/purge_workers')" value="Purge the Worker Queue" />
+
+</form>
+{% endblock %}
