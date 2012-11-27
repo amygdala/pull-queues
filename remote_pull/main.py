@@ -151,7 +151,7 @@ class GetRemoteTasks(webapp2.RequestHandler):
       logging.debug('Got lease result: %s', res)
       return res
     except:
-      logging.exception('ack')
+      logging.exception('Problem leasing tasks')
 
   def deleteCompletedTask(self, res, item):
     credentials = (
@@ -185,12 +185,12 @@ class GetRemoteTasks(webapp2.RequestHandler):
             task = base64.b64decode(item['payloadBase64'])
             # here, you'd typically do something with the task...
             # ... then we delete it.
-            logging.info('Deleting task: %s', item)
+            logging.debug('Deleting task: %s', item)
             self.deleteCompletedTask(res, item)
         except:
-          logging.exception('Error')
+          logging.exception('Problem processing or deleting tasks')
       except:
-        logging.debug('No items returned.')
+        logging.info('No task queue items returned.')
     # Cause a non-logging failure so that this worker can reschedule.
     self.redirect('/')
 

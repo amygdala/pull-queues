@@ -1,0 +1,20 @@
+
+# CHANGE THIS
+client_id='xxxxxxxx.apps.googleusercontent.com'
+# CHANGE THIS
+client_secret='xxxxxx'
+
+# CHANGE THIS: The app id of the other app that has the pull queue from which
+# this app will read.
+PROVIDER_APP_NAME = 'your_provider_appid'
+# The name of the pull queue in the provider app. CHANGE THIS if necessary.
+JOB_QUEUE = 'jobs'
+
+# The name of the worker queue must match a defined push queue for this app.
+WORKER_QUEUE_NAME = 'worker'
+
+# This value will be used to generate the tag names in the lease request. So,
+# the app providing the pull queue should be generating the same space of
+# tags names.  If you use the 'multi_pull' app in this repository to provide
+# the pull queue, ensure that it has NUM_TAGS set to the same value.
+NUM_TAGS = 4

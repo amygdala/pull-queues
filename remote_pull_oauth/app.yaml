@@ -1,0 +1,32 @@
+application: myappid
+version: one
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /css
+  static_dir: static/css
+
+- url: /js
+  static_dir: static/js
+
+- url: /bootstrap/js
+  static_dir: static/bootstrap/js
+
+- url: /bootstrap/css
+  static_dir: static/bootstrap/css
+
+- url: .*
+  script: main.app
+  login: admin
+
+builtins:
+- deferred: on
+
+inbound_services:
+- warmup
+
+libraries:
+- name: jinja2
+  version: latest

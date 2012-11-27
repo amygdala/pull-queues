@@ -1,0 +1,45 @@
+body {
+  padding-top: 60px;
+}
+
+img {
+  padding: 0px;
+  margin: 0px;
+  height: 80px;
+  width: 80px;
+  float: left;
+}
+
+select {
+  width: 55px;
+  margin-top: 12px;
+  line-height: 18px;
+}
+
+#instances {
+  margin-bottom: 20px;
+}
+
+.color-block {
+  height: 12px;
+  width: 12px;
+  float: left;
+  margin: 3px 5px 0 0;
+  clear: both;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: #FFD000;
+}
+
+.green {
+  background-color: green;
+}
